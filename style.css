@@ -1,7 +1,7 @@
 /* Import Montserrat Font */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
 
-/* Apply global styles */
+/* General Page Styling */
 body {
     font-family: 'Montserrat', sans-serif;
     background-color: #f9f9f9;
@@ -10,65 +10,79 @@ body {
     padding: 0;
 }
 
-/* Header Styling */
-header {
+/* Navbar */
+.navbar {
     background-color: #161b42;
-    padding: 15px 0;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
 }
 
-h1, h2, h3 {
-    font-weight: bold;
-    color: #161b42;
+/* Navbar Logo (Bigger Top-Left Icon) */
+.navbar-logo img {
+    height: 70px; /* Adjust size to make it bigger */
 }
 
-/* Navigation Bar */
-nav {
-    text-align: center;
-    padding: 10px;
+/* Navbar Links */
+.nav-links {
+    display: flex;
+    gap: 20px;
 }
 
-nav ul {
-    list-style: none;
-    padding: 0;
-}
-
-nav ul li {
-    display: inline;
-    margin: 0 15px;
-}
-
-nav ul li a {
+.nav-links a {
+    color: white;
     text-decoration: none;
     font-size: 18px;
     font-weight: bold;
-    color: #161b42;
     transition: color 0.3s ease-in-out;
 }
 
-nav ul li a:hover {
-    color: #4a4f8c;
+.nav-links a:hover {
+    color: #ffcc00; /* Highlight effect */
 }
 
-/* Page Content */
-.container {
-    width: 80%;
-    max-width: 1200px;
-    margin: auto;
-    padding: 20px;
+/* Centered Logo */
+.center-logo {
+    display: flex;
+    justify-content: center;
+    margin-top: 120px; /* Push down to avoid navbar overlap */
 }
 
-/* Button Styling */
-button {
-    background-color: #161b42;
-    color: white;
+.center-logo img {
+    max-width: 400px;
+    height: auto;
+}
+
+/* Dropdown Styling */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-btn {
+    font-size: 24px;
     font-weight: bold;
+    color: #161b42;
+    background: transparent;
     border: none;
-    padding: 10px 20px;
     cursor: pointer;
-    transition: background 0.3s ease;
+    padding: 10px 20px;
 }
 
-button:hover {
-    background-color: #4a4f8c;
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background: white;
+    min-width: 200px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
 }

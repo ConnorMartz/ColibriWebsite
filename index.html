@@ -9,23 +9,43 @@
 <body>
 
     <!-- Navigation Bar -->
-    <header>
-        <h1>Colibri Telescope Array</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+    <div class="navbar">
+        <!-- Larger Top-Left Logo -->
+        <div class="navbar-logo">
+            <img src="Colibri_Icon.png" alt="Colibri Icon">
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Homepage</a>
+            <a href="about.html">About COLIBRI</a>
+            <a href="projects.html">Student Projects</a>
+            <a href="docs.html">Technical Documentation</a>
+            <a href="faqs.html">FAQs</a>
+            <a href="contact.html">Contact Directory</a>
+        </div>
+    </div>
 
-    <!-- Main Content -->
-    <div class="container">
-        <h2>Welcome to the Colibri Telescope Array</h2>
-        <p>This is a research project focused on meteor detection and analysis.</p>
-        <button>Learn More</button>
+    <!-- Centered Logo -->
+    <div class="center-logo">
+        <img src="Colibri_Logo.png" alt="Colibri Logo">
+    </div>
+
+    <!-- Dropdown Links -->
+    <div style="text-align:center; margin-top: 50px;">
+        <div class="dropdown">
+            <button class="dropdown-btn">About the Project ▼</button>
+            <div class="dropdown-content">
+                <a href="project1.html">Project 1</a>
+                <a href="project2.html">Project 2</a>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <button class="dropdown-btn">Student Projects ▼</button>
+            <div class="dropdown-content">
+                <a href="project1.html">Toni Almeida - PhD Candidate</a>
+                <a href="project2.html">Anthony Girmenia - MSc student</a>
+            </div>
+        </div>
     </div>
 
 </body>
