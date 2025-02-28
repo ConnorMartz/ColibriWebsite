@@ -15,27 +15,29 @@ body {
     background-color: #161b42;
     display: flex;
     align-items: center;
-    justify-content: flex-start; /* Move everything to the left */
-    padding: 15px 30px; /* More padding for better spacing */
+    justify-content: space-between; /* Evenly spaces out items */
+    padding: 15px 30px;
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
 }
 
-/* Navbar Logo (Top-Left Icon) */
+/* Navbar Logo */
 .navbar-logo {
-    margin-right: 20px; /* Adds space between logo and text */
+    flex: 1; /* Takes up space on the left */
 }
 
 .navbar-logo img {
-    height: 80px; /* Adjust size to match navbar */
+    height: 80px; /* Adjust logo size */
 }
 
 /* Navbar Links */
 .nav-links {
     display: flex;
-    gap: 30px; /* More spacing between links */
+    flex: 2; /* Takes up the rest of the navbar */
+    justify-content: space-between; /* Justifies links across the width */
+    align-items: center;
 }
 
 .nav-links a {
@@ -44,6 +46,8 @@ body {
     font-size: 30px; /* Bigger text */
     font-weight: bold;
     transition: color 0.3s ease-in-out;
+    flex-grow: 1; /* Ensures equal spacing */
+    text-align: center; /* Aligns text within each link */
 }
 
 .nav-links a:hover {
