@@ -50,12 +50,14 @@ body {
 .center-logo {
     display: flex;
     justify-content: center;
-    margin-top: 100px; /* Adjust spacing from navbar */
-    height:  -200px;
+    align-items: center;
+    margin-top: 250px; /* Increase to move it further down */
+    width: 100%;
 }
 
+/* Ensure the logo scales properly */
 .center-logo img {
-    max-width: 1500px; /* Increase size */
+    max-width: 1500px; /* Adjust size */
     height: auto;
 }
 
