@@ -51,7 +51,7 @@ body {
     display: flex;
     justify-content: center;
     margin-top: 100px; /* Adjust spacing from navbar */
-    height:  -50px;
+    height:  -100px;
 }
 
 .center-logo img {
