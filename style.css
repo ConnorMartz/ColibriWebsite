@@ -91,19 +91,21 @@ body {
     border-radius: 5px;
 }
 
-/* Show dropdown content when hovering */
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-/* Increase dropdown button size */
+/* Style for About the Project & Student Projects */
 .dropdown-btn {
-    font-size: 36px;
-    font-weight: bold;
-    color: #161b42;
+    font-family: 'Montserrat', sans-serif; /* Match Navbar Font */
+    font-weight: 700; /* Bold to match navbar */
+    font-size: 30px; /* Increase size */
+    color: #161b42; /* Keep the same color */
     background: transparent;
     border: none;
     cursor: pointer;
-    padding: 15px 25px;
+    padding: 10px 20px;
     transition: color 0.3s ease-in-out;
+    text-rendering: optimizeLegibility; /* Smooth Rendering */
+}
+
+/* Hover Effect */
+.dropdown-btn:hover {
+    color: #4a4f8c; /* Subtle hover color shift */
 }
