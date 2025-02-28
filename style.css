@@ -72,26 +72,30 @@ body {
 /* Dropdown Section */
 .dropdown-container {
     display: flex;
-    justify-content: space-between; /* Spreads items to left and right */
+    justify-content: space-between; /* Align left and right */
     align-items: center;
-    width: 80%; /* Keeps layout balanced */
-    margin: 40px auto; /* Centers the section */
+    width: 80%;
+    margin: 40px auto;
 }
 
-/* Left and Right Dropdowns */
-.dropdown-left {
-    text-align: right;
-    flex: 1;
+/* Hide dropdown content by default */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background: white;
+    min-width: 200px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
 }
 
-.dropdown-right {
-    text-align: left;
-    flex: 1;
+/* Show dropdown content when hovering */
+.dropdown:hover .dropdown-content {
+    display: block;
 }
 
-/* Dropdown Buttons */
+/* Increase dropdown button size */
 .dropdown-btn {
-    font-size: 36px; /* Increased font size */
+    font-size: 36px;
     font-weight: bold;
     color: #161b42;
     background: transparent;
@@ -99,9 +103,4 @@ body {
     cursor: pointer;
     padding: 15px 25px;
     transition: color 0.3s ease-in-out;
-}
-
-/* Dropdown Hover Effect */
-.dropdown-btn:hover {
-    color: #4a4f8c;
 }
