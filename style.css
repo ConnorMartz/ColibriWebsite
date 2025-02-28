@@ -35,7 +35,7 @@ body {
 /* Navbar Links */
 .nav-links {
     display: flex;
-    justify-content: center; /* Ensures text is centered within its container */
+    justify-content: left; /* Ensures text is centered within its container */
     flex-grow: 1; /* Makes links take up remaining space */
     gap: 30px;
 }
