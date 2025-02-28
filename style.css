@@ -1,31 +1,43 @@
+/* Import Montserrat Font */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+
+/* General Page Styling */
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f9f9f9;
+    color: #161b42;
+    margin: 0;
+    padding: 0;
+}
+
 /* Navbar */
 .navbar {
     background-color: #161b42;
     display: flex;
     align-items: center;
-    padding: 20px 40px;
+    padding: 15px 30px;
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Adds a soft shadow */
 }
 
 /* Navbar Logo */
 .navbar-logo {
-    flex-shrink: 0;
-    margin-right: 30px;
+    flex-shrink: 0; /* Prevents logo from shrinking */
+    margin-right: 20px;
 }
 
 .navbar-logo img {
-    height: 90px; /* Slightly reduced to fit better */
+    height: 100px;
 }
 
 /* Navbar Links */
 .nav-links {
     display: flex;
-    gap: 40px;
-    flex-grow: 1;
+    justify-content: left; /* Ensures text is centered within its container */
+    flex-grow: 1; /* Makes links take up remaining space */
+    gap: 30px;
 }
 
 .nav-links a {
@@ -33,19 +45,55 @@
     text-decoration: none;
     font-size: 30px;
     font-weight: bold;
-    transition: all 0.3s ease-in-out;
+    transition: color 0.3s ease-in-out;
     text-align: center;
-    padding: 10px 15px;
-    border-radius: 8px; /* Soft rounded edges for hover effect */
 }
 
-/* Add hover effect */
 .nav-links a:hover {
-    background-color: rgba(255, 255, 255, 0.2);
     color: #ffcc00;
 }
 
-/* Space between logo and links */
-.navbar-logo + .nav-links {
-    margin-left: 20px;
+
+/* Centered Logo */
+.center-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 250px; /* Increase to move it further down */
+    width: 100%;
+}
+
+/* Ensure the logo scales properly */
+.center-logo img {
+    max-width: 1500px; /* Adjust size */
+    height: auto;
+}
+
+/* Dropdown Styling */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-btn {
+    font-size: 24px;
+    font-weight: bold;
+    color: #161b42;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background: white;
+    min-width: 200px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
 }
