@@ -1,24 +1,52 @@
-<!-- Navigation Bar -->
-<div class="navbar">
-    <!-- Left Side Navigation -->
-    <div class="nav-left nav-links">
-        <a href="index.html">Homepage</a>
-        <a href="about.html">About COLIBRI</a>
-        <a href="projects.html">Student Projects</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colibri Telescope Array</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <!-- Larger Top-Left Logo -->
+        <div class="navbar-logo">
+            <img src="Colibri_Icon.png" alt="Colibri Icon">
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Homepage</a>
+            <a href="about.html">About COLIBRI</a>
+            <a href="projects.html">Student Projects</a>
+            <a href="docs.html">Technical Documentation</a>
+            <a href="faqs.html">FAQs</a>
+            <a href="contact.html">Contact Directory</a>
+        </div>
     </div>
 
-    <!-- Center Logo -->
-    <div class="navbar-logo">
+    <!-- Centered Logo -->
+    <div class="center-logo">
         <img src="Colibri_Logo.png" alt="Colibri Logo">
     </div>
 
-    <!-- Right Side Navigation -->
-    <div class="nav-right nav-links">
-        <a href="docs.html">Technical Documentation</a>
-        <a href="faqs.html">FAQs</a>
-        <a href="contact.html">Contact Directory</a>
-    </div>
-</div>
+    <!-- Dropdown Links -->
+    <div style="text-align:center; margin-top: 50px;">
+        <div class="dropdown">
+            <button class="dropdown-btn">About the Project ▼</button>
+            <div class="dropdown-content">
+                <a href="project1.html">Project 1</a>
+                <a href="project2.html">Project 2</a>
+            </div>
+        </div>
 
-<!-- Spacing to avoid overlap -->
-<div style="margin-top: 120px;"></div>
+        <div class="dropdown">
+            <button class="dropdown-btn">Student Projects ▼</button>
+            <div class="dropdown-content">
+                <a href="project1.html">Toni Almeida - PhD Candidate</a>
+                <a href="project2.html">Anthony Girmenia - MSc student</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
