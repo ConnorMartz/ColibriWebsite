@@ -15,7 +15,6 @@ body {
     background-color: #161b42;
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Evenly spaces out items */
     padding: 15px 30px;
     position: fixed;
     top: 0;
@@ -25,33 +24,33 @@ body {
 
 /* Navbar Logo */
 .navbar-logo {
-    flex: 1; /* Takes up space on the left */
+    flex-shrink: 0; /* Prevents logo from shrinking */
+    margin-right: 20px;
 }
 
 .navbar-logo img {
-    height: 80px; /* Adjust logo size */
+    height: 80px;
 }
 
 /* Navbar Links */
 .nav-links {
     display: flex;
-    flex: 2; /* Takes up the rest of the navbar */
-    justify-content: space-between; /* Justifies links across the width */
-    align-items: center;
+    justify-content: center; /* Ensures text is centered within its container */
+    flex-grow: 1; /* Makes links take up remaining space */
+    gap: 30px;
 }
 
 .nav-links a {
     color: white;
     text-decoration: none;
-    font-size: 30px; /* Bigger text */
+    font-size: 30px;
     font-weight: bold;
     transition: color 0.3s ease-in-out;
-    flex-grow: 1; /* Ensures equal spacing */
-    text-align: center; /* Aligns text within each link */
+    text-align: center;
 }
 
 .nav-links a:hover {
-    color: #ffcc00; /* Highlight effect */
+    color: #ffcc00;
 }
 
 
