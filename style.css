@@ -15,29 +15,33 @@ body {
     background-color: #161b42;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 10px 20px;
+    justify-content: flex-start; /* Move everything to the left */
+    padding: 15px 30px; /* More padding for better spacing */
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
 }
 
-/* Navbar Logo (Bigger Top-Left Icon) */
+/* Navbar Logo (Top-Left Icon) */
+.navbar-logo {
+    margin-right: 20px; /* Adds space between logo and text */
+}
+
 .navbar-logo img {
-    height: 120px; /* Adjust size to make it bigger */
+    height: 80px; /* Adjust size to match navbar */
 }
 
 /* Navbar Links */
 .nav-links {
     display: flex;
-    gap: 20px;
+    gap: 30px; /* More spacing between links */
 }
 
 .nav-links a {
     color: white;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 22px; /* Bigger text */
     font-weight: bold;
     transition: color 0.3s ease-in-out;
 }
@@ -45,6 +49,7 @@ body {
 .nav-links a:hover {
     color: #ffcc00; /* Highlight effect */
 }
+
 
 /* Centered Logo */
 .center-logo {
