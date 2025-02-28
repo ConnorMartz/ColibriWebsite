@@ -38,7 +38,7 @@ body {
 
 /* Centered Logo */
 .navbar-logo img {
-    height: 40px; /* Reduce to half */
+    height: 20px; /* Reduce to half */
     width: auto;
 }
 
