@@ -72,13 +72,13 @@ body {
     height: auto;
 }
 
-/* Dropdown Section */
+/* Dropdown Section *//* Adjust Positioning */
 .dropdown-container {
     display: flex;
-    justify-content: space-between; /* Align left and right */
+    justify-content: space-between; /* Aligns left & right */
     align-items: center;
     width: 80%;
-    margin: 40px auto;
+    margin: 50px auto; /* Centers it properly */
 }
 
 /* Hide dropdown content by default */
@@ -93,19 +93,19 @@ body {
 
 /* Style for About the Project & Student Projects */
 .dropdown-btn {
-    font-family: 'Montserrat', sans-serif; /* Match Navbar Font */
+    font-family: 'Montserrat', sans-serif; /* Matches Navbar Font */
     font-weight: 700; /* Bold to match navbar */
-    font-size: 30px; /* Increase size */
-    color: #161b42; /* Keep the same color */
+    font-size: 40px; /* Increased size */
+    color: #161b42; /* Keep same color */
     background: transparent;
     border: none;
     cursor: pointer;
-    padding: 10px 20px;
+    padding: 15px 30px; /* Increased padding for better spacing */
     transition: color 0.3s ease-in-out;
-    text-rendering: optimizeLegibility; /* Smooth Rendering */
+    text-rendering: optimizeLegibility; /* Smooth text rendering */
 }
 
 /* Hover Effect */
 .dropdown-btn:hover {
-    color: #4a4f8c; /* Subtle hover color shift */
+    color: #4a4f8c; /* Subtle color shift on hover */
 }
