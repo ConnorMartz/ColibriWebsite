@@ -36,8 +36,9 @@ body {
     justify-content: center;
 }
 
+/* Centered Logo */
 .navbar-logo img {
-    height: 80px; /* Make the logo bigger */
+    height: 40px; /* Reduce to half */
     width: auto;
 }
 
