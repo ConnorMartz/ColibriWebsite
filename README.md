@@ -21,7 +21,7 @@
 ## **Customization Instructions** ##
  - **Updating Content:** Edit HTML files (`index.html`, `about.html`, etc.) directly.
  - **Adjusting Styles:** Modify `style.css` to adjust visual aspects.
- - **Updating Graphics:** Replace image files (e.g., `Colibri_Logo.png`) directly in the repository.\
+ - **Updating Graphics:** Replace image files (e.g., `Colibri_Logo.png`) directly in the repository.
 
 ## **Deployment Instructions** ##
  - This website is deployed automatically through GitHub Pages upon pushing changes to the `main` branch.
