@@ -13,10 +13,10 @@
  6) _Contact Directory_: Information for contacting team members.
 
 ## **Tools and Resources** ##
- i) HTML & CSS
- ii) Google Fonts (Montserrat)
- iii) GitHub Pages for hosting
- iv) Git & GitHub Desktop for version control
+ i) HTML & CSS.
+ ii) Google Fonts (Montserrat).
+ iii) GitHub Pages for hosting.
+ iv) Git & GitHub Desktop for version control.
 
 ## **Customization Instructions** ##
  - **Updating Content:** Edit HTML files (`index.html`, `about.html`, etc.) directly.
