@@ -83,9 +83,9 @@ body {
     margin: 50px auto; /* Centers it properly */
 }
 
-/* Hide dropdown content by default */
+/* Specific content for each link */
 .dropdown-content a {
-    display: none;
+    display: block;
     padding: 20px 30px;         /* Adds more click area and spacing */
     color: #161b42;
     text-decoration: none;
@@ -95,6 +95,16 @@ body {
     transition: background 0.2s, color 0.2s;
     border-radius: 5px;
     margin-bottom: 5px;
+}
+
+/* Hide dropdown content by default */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background: white;
+    min-width: 200px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
 }
 
 /* Style for About the Project & Student Projects */
