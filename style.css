@@ -111,3 +111,9 @@ body {
 .dropdown-btn:hover {
     color: #4a4f8c; /* Subtle color shift on hover */
 }
+
+/* Show dropdown content when hovering over the dropdown area */
+.dropdown:hover .dropdown-content,
+.dropdown:focus-within .dropdown-content {
+    display: block;
+}
