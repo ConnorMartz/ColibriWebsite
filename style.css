@@ -63,7 +63,8 @@ body {
     justify-content: center;
     align-items: center;
     margin-top: 120px; /* Was 250px */
-    max-width: 3000px;
+    width: 800px;   /* You can increase to 900px or 1000px if needed */
+    max-width: 100%;  /* Prevents overflow on small screens */
     height: auto;
 }
 
