@@ -39,7 +39,7 @@ body {
     display: flex;
     flex-grow: 1;
     justify-content: left;
-    gap: 50px;
+    gap: 60px;
 }
 
 /* Navbar Links Styling */
