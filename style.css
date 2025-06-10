@@ -85,7 +85,7 @@ body {
 
 /* Hide dropdown content by default */
 .dropdown-content a {
-    display: block;
+    display: none;
     padding: 20px 30px;         /* Adds more click area and spacing */
     color: #161b42;
     text-decoration: none;
