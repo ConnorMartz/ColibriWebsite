@@ -68,7 +68,7 @@ body {
 }
 
 .center-logo img {
-    width: 800px;         /* Set your desired logo width here! */
+    width: 1500px;         /* Set your desired logo width here! */
     max-width: 100%;      /* So it shrinks on mobile */
     height: auto;
 }
