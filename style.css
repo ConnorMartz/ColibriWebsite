@@ -31,7 +31,7 @@ body {
 }
 
 .navbar-logo img {
-    height: 100px;
+    height: 50px;
 }
 
 /* Navbar Links */
@@ -39,14 +39,14 @@ body {
     display: flex;
     flex-grow: 1;
     justify-content: left;
-    gap: 60px;
+    gap: 40px;
 }
 
 /* Navbar Links Styling */
 .nav-links a {
     color: white;
     text-decoration: none;
-    font-size: 60px;
+    font-size: 40px;
     font-weight: bold;
     transition: color 0.3s ease-in-out;
     text-align: center;
@@ -68,7 +68,7 @@ body {
 }
 
 .center-logo img {
-    width: 1000px;         /* Set your desired logo width here! */
+    width: 500px;         /* Set your desired logo width here! */
     max-width: 100%;      /* So it shrinks on mobile */
     height: auto;
 }
@@ -111,7 +111,7 @@ body {
 .dropdown-btn {
     font-family: 'Montserrat', sans-serif; /* Matches Navbar Font */
     font-weight: 700; /* Bold to match navbar */
-    font-size: 60px; /* Increased size */
+    font-size: 40px; /* Increased size */
     color: #161b42; /* Keep same color */
     background: transparent;
     border: none;
