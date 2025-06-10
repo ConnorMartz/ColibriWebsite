@@ -97,7 +97,7 @@ body {
 .dropdown-btn {
     font-family: 'Montserrat', sans-serif; /* Matches Navbar Font */
     font-weight: 700; /* Bold to match navbar */
-    font-size: 40px; /* Increased size */
+    font-size: 100px; /* Increased size */
     color: #161b42; /* Keep same color */
     background: transparent;
     border: none;
