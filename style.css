@@ -81,6 +81,7 @@ body {
     align-items: center; 
     width: 80%; 
     margin: auto; /* Centers it properly */ 
+    position: relative;
     top: -200px;
 } 
 
