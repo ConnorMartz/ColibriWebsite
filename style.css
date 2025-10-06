@@ -58,88 +58,71 @@ body {
     color: #ffcc00; /* Gold hover effect for elegance */
 }
 
-/* Hover effect for dropdown links */
-.dropdown-content a:hover {
-    color: #ffcc00; /* Gold text on hover */
-    background-color: transparent; /* Keep background unchanged */
-}
-/* Group the logo and dropdowns together in one aligned flex section */
-.dropdown-logo-section {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start; /* Align top edges together */
-    width: 80%;
-    margin: 160px auto 0 auto; /* Push down below navbar */
-    gap: 40px; /* Space between logo and dropdowns */
-}
-.center-logo {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start; /* align logo top with buttons */
-}
+.center-logo { 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    margin-top: 100px; 
+    width: 100%; /* Take up the full available width */ 
+    max-width: none; /* Remove previous max-width setting */ 
+    height: auto; 
+} 
+.center-logo img { 
+    width: 500px; 
+    /* Set your desired logo width here! */ 
+    max-width: 100%; /* So it shrinks on mobile */ 
+    height: auto; 
+} 
 
-.center-logo img {
-    width: 500px;         /* Set your desired logo width here! */
-    max-width: 100%;      /* So it shrinks on mobile */
-    height: auto;
-}
+/* Dropdown Section *//* Adjust Positioning */ 
+.dropdown-container { 
+    display: flex; 
+    justify-content: space-between; /* Aligns left & right */ 
+    align-items: center; 
+    width: 80%; 
+    margin: auto; /* Centers it properly */ 
+} 
 
+/* Specific content for each link */ 
+.dropdown-content a { 
+    display: block; 
+    padding: 20px 30px; /* Adds more click area and spacing */ 
+    color: #161b42; 
+    text-decoration: none; 
+    font-size: 40px; /* Adjust to your preferred size*/ 
+    font-weight: 700; 
+    font-family: 'Montserrat', sans-serif; 
+    transition: background 0.2s, color 0.2s; 
+    border-radius: 5px; margin-bottom: 5px; 
+} 
 
-/* Dropdown Section *//* Adjust Positioning */
-.dropdown-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 20px;
-}
+/* Hide dropdown content by default */ 
+.dropdown-content { 
+    display: none; 
+    position: absolute; 
+    background: white; 
+    min-width: 200px; 
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); 
+    border-radius: 5px; 
+} 
+/* Style for About the Project & Student Projects */ 
+.dropdown-btn { 
+    font-family: 'Montserrat', sans-serif; /* Matches Navbar Font */ 
+    font-weight: 700; /* Bold to match navbar */ 
+    font-size: 40px; /* Increased size */ 
+    color: #161b42; /* Keep same color */ 
+    background: transparent; 
+    border: none; 
+    cursor: pointer; 
+    padding: 15px 30px; /* Increased padding for better spacing */ 
+    transition: color 0.3s ease-in-out; 
+    text-rendering: optimizeLegibility; /* Smooth text rendering */ 
+} 
+/* Hover Effect */ 
+.dropdown-btn:hover { 
+    color: #4a4f8c; /* Subtle color shift on hover */ 
+} /* Show dropdown content when hovering over the dropdown area */ 
 
-/* Specific content for each link */
-.dropdown-content a {
-    display: block;
-    padding: 20px 30px;         /* Adds more click area and spacing */
-    color: #161b42;
-    text-decoration: none;
-    font-size: 40px;            /* Adjust to your preferred size */
-    font-weight: 700;
-    font-family: 'Montserrat', sans-serif;
-    transition: background 0.2s, color 0.2s;
-    border-radius: 5px;
-    margin-bottom: 5px;
-}
-
-/* Hide dropdown content by default */
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background: white;
-    min-width: 200px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
-}
-
-/* Style for About the Project & Student Projects */
-.dropdown-btn {
-    font-family: 'Montserrat', sans-serif; /* Matches Navbar Font */
-    font-weight: 700; /* Bold to match navbar */
-    font-size: 40px; /* Increased size */
-    color: #161b42; /* Keep same color */
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 15px 30px; /* Increased padding for better spacing */
-    transition: color 0.3s ease-in-out;
-    text-rendering: optimizeLegibility; /* Smooth text rendering */
-}
-
-/* Hover Effect */
-.dropdown-btn:hover {
-    color: #4a4f8c; /* Subtle color shift on hover */
-}
-
-/* Show dropdown content when hovering over the dropdown area */
-.dropdown:hover .dropdown-content,
-.dropdown:focus-within .dropdown-content {
-    display: block;
+.dropdown:hover .dropdown-content, .dropdown:focus-within .dropdown-content { 
+    display: block; 
 }
