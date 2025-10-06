@@ -68,7 +68,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 120px;
+    margin-top: 40px;
     width: 100%;          /* Take up the full available width */
     max-width: none;      /* Remove previous max-width setting */
     height: auto;
