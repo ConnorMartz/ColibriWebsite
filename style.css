@@ -116,7 +116,8 @@ body {
     cursor: pointer; 
     padding: 15px 30px; /* Increased padding for better spacing */ 
     transition: color 0.3s ease-in-out; 
-    text-rendering: optimizeLegibility; /* Smooth text rendering */ 
+    text-rendering: optimizeLegibility; /* Smooth text rendering */
+    position: relative;
     top: -60px; /* adjust this value to move them higher or lower */
 }
 } 
