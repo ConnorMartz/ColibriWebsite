@@ -85,6 +85,10 @@ body {
     top: -200px;
 } 
 
+.dropdown {
+  position: relative; /* establishes a positioning context for the menu */
+}
+
 /* Specific content for each link */ 
 .dropdown-content a { 
     display: block; 
@@ -121,7 +125,6 @@ body {
     text-rendering: optimizeLegibility; /* Smooth text rendering */
     position: relative;
     top: -200px; /* adjust this value to move them higher or lower */
-}
 } 
 /* Hover Effect */ 
 .dropdown-btn:hover { 
