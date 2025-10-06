@@ -60,8 +60,8 @@ body {
 
 /* Hover effect for dropdown links */
 .dropdown-content a:hover {
-    background-color: #ffcc00; /* Gold background on hover */
-    color: white;              /* White text for contrast */
+    color: #ffcc00; /* Gold text on hover */
+    background-color: transparent; /* Keep background unchanged */
 }
 
 .center-logo {
