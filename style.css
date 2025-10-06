@@ -63,15 +63,20 @@ body {
     color: #ffcc00; /* Gold text on hover */
     background-color: transparent; /* Keep background unchanged */
 }
-
+/* Group the logo and dropdowns together in one aligned flex section */
+.dropdown-logo-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Align top edges together */
+    width: 80%;
+    margin: 160px auto 0 auto; /* Push down below navbar */
+    gap: 40px; /* Space between logo and dropdowns */
+}
 .center-logo {
+    flex: 1;
     display: flex;
     justify-content: center;
-    align-items: center;
-    margin-top: 100px;
-    width: 100%;          /* Take up the full available width */
-    max-width: none;      /* Remove previous max-width setting */
-    height: auto;
+    align-items: flex-start; /* align logo top with buttons */
 }
 
 .center-logo img {
@@ -84,10 +89,10 @@ body {
 /* Dropdown Section *//* Adjust Positioning */
 .dropdown-container {
     display: flex;
-    justify-content: space-between; /* Aligns left & right */
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
-    width: 80%;
-    margin: auto; /* Centers it properly */
+    gap: 20px;
 }
 
 /* Specific content for each link */
