@@ -81,6 +81,7 @@ body {
     align-items: center; 
     width: 80%; 
     margin: auto; /* Centers it properly */ 
+    top: -200px;
 } 
 
 /* Specific content for each link */ 
@@ -94,7 +95,6 @@ body {
     font-family: 'Montserrat', sans-serif; 
     transition: background 0.2s, color 0.2s; 
     border-radius: 5px; margin-bottom: 5px; 
-    top: -200px;
 } 
 
 /* Hide dropdown content by default */ 
