@@ -127,6 +127,12 @@ body {
     color: #4a4f8c; /* Subtle color shift on hover */ 
 } /* Show dropdown content when hovering over the dropdown area */ 
 
+/* Hover effect for dropdown links */ 
+.dropdown-content a:hover { 
+    color: #ffcc00; /* Gold text on hover */ 
+    background-color: transparent; /* Keep background unchanged */ 
+}
+
 .dropdown:hover .dropdown-content, .dropdown:focus-within .dropdown-content { 
     display: block; 
 }
