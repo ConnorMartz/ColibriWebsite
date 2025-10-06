@@ -87,7 +87,7 @@ body {
     justify-content: space-between; /* Aligns left & right */
     align-items: center;
     width: 80%;
-    margin: -60px auto; /* Centers it properly */
+    margin: -100px auto; /* Centers it properly */
 }
 
 /* Specific content for each link */
