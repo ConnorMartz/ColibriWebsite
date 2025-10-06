@@ -58,6 +58,12 @@ body {
     color: #ffcc00; /* Gold hover effect for elegance */
 }
 
+/* Hover effect for dropdown links */
+.dropdown-content a:hover {
+    background-color: #ffcc00; /* Gold background on hover */
+    color: white;              /* White text for contrast */
+}
+
 .center-logo {
     display: flex;
     justify-content: center;
