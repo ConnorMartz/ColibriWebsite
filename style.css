@@ -58,6 +58,61 @@ body {
     color: #ffcc00; /* Gold hover effect for elegance */
 }
 
+/* Ensure navbar dropdowns only show on hover */
+.nav-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown button look */
+.nav-dropbtn {
+  background: transparent;
+  border: none;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  font-size: 30px;
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+}
+
+.nav-dropbtn:hover {
+  color: #ffcc00; /* Gold on hover */
+}
+
+/* Hidden by default */
+.nav-dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 240px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  top: 100%;
+  left: 0;
+  z-index: 1001;
+}
+
+/* Links inside dropdown */
+.nav-dropdown-content a {
+  color: #161b42;
+  padding: 12px 20px;
+  text-decoration: none;
+  display: block;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.nav-dropdown-content a:hover {
+  color: #ffcc00;
+  background-color: transparent;
+}
+
+/* Show only when hovered */
+.nav-dropdown:hover .nav-dropdown-content {
+  display: block;
+}
+
 .center-logo { 
     display: flex; 
     justify-content: center; 
