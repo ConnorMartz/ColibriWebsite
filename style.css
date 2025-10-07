@@ -82,7 +82,7 @@ body {
     width: 80%; 
     margin: auto; /* Centers it properly */ 
     position: relative;
-    top: -200px;
+    /*top: -200px;*/
 } 
 
 .dropdown {
@@ -123,6 +123,7 @@ body {
     padding: 15px 30px; /* Increased padding for better spacing */ 
     transition: color 0.3s ease-in-out; 
     text-rendering: optimizeLegibility; /* Smooth text rendering */
+    top: -150px; /* adjust this number to fine-tune vertical placement */
 } 
 /* Hover Effect */ 
 .dropdown-btn:hover { 
