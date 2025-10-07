@@ -92,7 +92,7 @@ body {
 /* Specific content for each link */ 
 .dropdown-content a { 
     display: block; 
-    padding: 20px 30px; /* Adds more click area and spacing */ 
+    padding: 10px 20px; /* Adds more click area and spacing */ 
     color: #161b42; 
     text-decoration: none; 
     font-size: 20px; /* Adjust to your preferred size*/ 
