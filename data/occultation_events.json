@@ -1,1 +1,82 @@
-[]
+[
+  {
+    "name": "1999 XQ96",
+    "datetime_utc": "2024-01-01T00:00:04Z",
+    "magnitude_drop": 0.8620221507277712,
+    "duration": 2.1231182795698924,
+    "ra_deg": 97.69369541666669,
+    "dec_deg": 10.569423888888888
+  },
+  {
+    "name": "2019 MN29",
+    "datetime_utc": "2024-01-01T00:00:04Z",
+    "magnitude_drop": 6.593737449154224,
+    "duration": null,
+    "ra_deg": 107.16340375,
+    "dec_deg": 16.648609722222222
+  },
+  {
+    "name": "2006 BJ103",
+    "datetime_utc": "2024-01-01T00:00:07Z",
+    "magnitude_drop": 4.235438057564672,
+    "duration": null,
+    "ra_deg": 330.52695,
+    "dec_deg": -13.143063333333332
+  },
+  {
+    "name": "2011 WR1",
+    "datetime_utc": "2024-01-01T00:00:12Z",
+    "magnitude_drop": 3.226019733538019,
+    "duration": null,
+    "ra_deg": 86.26320041666666,
+    "dec_deg": 25.8383275
+  },
+  {
+    "name": "2020 QC89",
+    "datetime_utc": "2024-01-01T00:00:20Z",
+    "magnitude_drop": 5.6178024859717,
+    "duration": null,
+    "ra_deg": 114.26402833333331,
+    "dec_deg": 24.434460833333333
+  },
+  {
+    "name": "2003 FP71",
+    "datetime_utc": "2024-01-01T00:00:26Z",
+    "magnitude_drop": 3.1566779483005574,
+    "duration": null,
+    "ra_deg": 90.61799791666668,
+    "dec_deg": 36.49899888888889
+  },
+  {
+    "name": "2001 KK76",
+    "datetime_utc": "2024-01-01T00:00:29Z",
+    "magnitude_drop": 4.952893657057239,
+    "duration": null,
+    "ra_deg": 278.55999833333334,
+    "dec_deg": -23.552734444444447
+  },
+  {
+    "name": "2001 KK76",
+    "datetime_utc": "2024-01-01T00:00:29Z",
+    "magnitude_drop": 4.952893657057239,
+    "duration": null,
+    "ra_deg": 278.55999833333334,
+    "dec_deg": -23.552734444444447
+  },
+  {
+    "name": "2019 NS58",
+    "datetime_utc": "2024-01-01T00:00:38Z",
+    "magnitude_drop": 6.0291052728047845,
+    "duration": null,
+    "ra_deg": 123.84228916666666,
+    "dec_deg": -5.202035833333333
+  },
+  {
+    "name": "2013 BT101",
+    "datetime_utc": "2024-01-01T00:00:39Z",
+    "magnitude_drop": 3.955620194473256,
+    "duration": null,
+    "ra_deg": 111.47211041666668,
+    "dec_deg": 32.14649111111111
+  }
+]
