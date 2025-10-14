@@ -220,26 +220,6 @@ def normalize(ev):
         "ra_deg": ra_deg,
         "dec_deg": dec_deg
     }
-
-def is_future(ev):
-    dt = parse_dt_str(ev)
-    if not dt:
-        return False
-    try:
-        return Time(dt).to_datetime(timezone.utc) > datetime.now(timezone.utc)
-    except Exception:
-        return False
-
-# after you compute `collected` and `fallback_any`
-future_only = [e for e in collected if is_future(e)]
-fallback_future = [e for e in fallback_any if is_future(e)]
-
-if len(future_only) >= 5:
-    collected = future_only
-elif len(fallback_future) >= 5:
-    collected = fallback_future
-else:
-    collected = future_only or fallback_future or fallback_any  # last resort
     
 # =============================
 # Main pipeline
