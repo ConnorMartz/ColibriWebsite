@@ -24,76 +24,96 @@ HEADERS = {
     "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) ColibriBot/1.0"
 }
 
-def fetch_occultations(start_date: str, end_date: str, want_future: int = 40, max_pages: int = 50):
+def fetch_occultations(start_date: str, end_date: str,
+                       want_future: int = 40, max_pages: int = 50):
     """
-    Query LIneA with proper date filters & ordering, follow pagination, and
-    stop early once we've collected 'want_future' FUTURE events.
+    Query LIneA, trying multiple param styles. Stop when we have enough
+    FUTURE events. Always returns a list (may be empty).
     """
-    all_events = []
-    page = 1
-    future_count = 0
+    def try_once(date_params: dict, page_key: str, ordering: str | None):
+        all_events, future_count, page = [], 0, 1
+        while page <= max_pages:
+            params = dict(date_params)
+            if ordering:
+                params["ordering"] = ordering
+            params[page_key] = page
+            params["page_size"] = 200
 
-    while page <= max_pages:
-        params = {
-            # DRF-style filters (common on LIneA)
-            "date_time__gte": start_date,
-            "date_time__lte": end_date,
-            "ordering": "date_time",
-            "page": page,
-            "page_size": 200,
-        }
-        print(f"📡 GET {LOPD_API_URL} {params}")
-        r = requests.get(LOPD_API_URL, params=params, headers=HEADERS, timeout=60)
-        print(f"🔗 status={r.status_code}")
-        r.raise_for_status()
-        data = r.json()
+            print(f"📡 GET {LOPD_API_URL} {params}")
+            r = requests.get(LOPD_API_URL, params=params, headers=HEADERS, timeout=60)
+            print(f"🔗 status={r.status_code}")
+            r.raise_for_status()
+            data = r.json()
 
-        page_events = data.get("results", data if isinstance(data, list) else [])
-        if not isinstance(page_events, list):
-            page_events = []
+            page_events = data.get("results", data if isinstance(data, list) else [])
+            if page == 1:
+                # snapshot for quick inspection
+                try:
+                    with open("data/_debug_raw_events.json", "w") as f:
+                        json.dump(page_events[:3], f, indent=2)
+                    print("📝 Wrote data/_debug_raw_events.json")
+                except Exception as e:
+                    print(f"⚠️ Debug snapshot failed: {e}")
 
-        # Write a tiny snapshot from page 1 so we can see keys
-        if page == 1:
-            try:
-                with open("data/_debug_raw_events.json", "w") as f:
-                    json.dump(page_events[:3], f, indent=2)
-                print("📝 Wrote data/_debug_raw_events.json")
-            except Exception as e:
-                print(f"⚠️ Could not write debug snapshot: {e}")
+            if not isinstance(page_events, list):
+                page_events = []
 
-        all_events.extend(page_events)
-        print(f"  • page {page}: +{len(page_events)} (total {len(all_events)})")
+            all_events.extend(page_events)
+            print(f"  • page {page}: +{len(page_events)} (total {len(all_events)})")
 
-        # Count FUTURE events on-the-fly so we can stop early
-        from datetime import datetime, timezone
-        from astropy.time import Time
-        now_utc = datetime.now(timezone.utc)
-        for ev in page_events:
-            dt = parse_dt_str(ev)
-            if not dt:
-                continue
-            try:
-                if Time(dt).to_datetime(timezone.utc) > now_utc:
-                    future_count += 1
-            except Exception:
-                pass
+            # count future on the fly
+            now_utc = datetime.now(timezone.utc)
+            for ev in page_events:
+                dt = parse_dt_str(ev)
+                if not dt:
+                    continue
+                try:
+                    if Time(dt).to_datetime(timezone.utc) > now_utc:
+                        future_count += 1
+                except Exception:
+                    pass
 
-        if future_count >= want_future:
-            print(f"✅ Collected {future_count} future events; stopping at page {page}.")
-            break
+            if future_count >= want_future:
+                print(f"✅ Collected {future_count} future events; stopping at page {page}.")
+                break
 
-        # Move to next page
-        next_page = data.get("next")
-        if not next_page:
-            break
-        if isinstance(next_page, int):
-            page = next_page
-        else:
-            # If it's a URL, just increment page; DRF usually reports an int anyway
-            page += 1
+            # advance page
+            next_val = data.get("next")
+            if not next_val:
+                break
+            if isinstance(next_val, int):
+                page = next_val
+            else:
+                page += 1
+        return all_events
 
-    print(f"✅ Aggregated {len(all_events)} items across up to {page} pages")
-    return all_events
+    # try several combinations
+    date_filter_variants = [
+        {"date_time__gte": start_date, "date_time__lte": end_date},
+        {"start_date": start_date, "end_date": end_date},
+        {"startDate": start_date, "endDate": end_date},
+    ]
+    page_keys = ["pageParam", "page"]
+    orderings = ["date_time", "-date_time", None]
+
+    for df in date_filter_variants:
+        for pg in page_keys:
+            for ordby in orderings:
+                try:
+                    events = try_once(df, pg, ordby)
+                    if events:
+                        print(f"✅ Got {len(events)} items with {df} + {pg} + ordering={ordby}")
+                        return events
+                except Exception as e:
+                    print(f"⚠️ Attempt {df}/{pg}/{ordby} failed: {e}")
+
+    # last-resort: no date filters, just order & paginate; we’ll filter future later
+    print("ℹ️ Falling back to no date filters (ordering only).")
+    try:
+        return try_once({}, "pageParam", "date_time")
+    except Exception as e:
+        print(f"❌ Fallback failed: {e}")
+        return []
 
 # =============================
 # Extract datetime string from event
