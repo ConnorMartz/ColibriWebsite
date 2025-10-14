@@ -76,14 +76,45 @@
         </div>
     </div>
 
+    <!-- This is the section of the code for adding information to the events board on the homepage-->
 <div class="event-box">
-  <h3>Upcoming Occultation Events</h3>
-  <ul>
-    <li><strong>Chariklo occultation</strong> – 2025-10-18 03:45 UTC</li>
-    <li><strong>KBO (2002 TX300)</strong> – 2025-11-02 08:22 UTC</li>
-    <li><strong>Haumea ring event</strong> – 2025-12-10 01:12 UTC</li>
-  </ul>
+  <h3>Upcoming Occultation Events (UTC)</h3>
+  <ul id="event-list"></ul>
 </div>
+
+<script>
+async function loadEvents() {
+  const response = await fetch('data/occultation_events.json');
+  const events = await response.json();
+
+  const now = new Date();
+  const upcoming = events
+    .filter(e => new Date(e.datetime_utc) > now)
+    .sort((a, b) => new Date(a.datetime_utc) - new Date(b.datetime_utc))
+    .slice(0, 10);
+
+  const list = document.getElementById('event-list');
+  list.innerHTML = '';
+
+  if (upcoming.length === 0) {
+    list.innerHTML = '<li>No upcoming events at this time.</li>';
+    return;
+  }
+
+  upcoming.forEach(e => {
+    const date = new Date(e.datetime_utc);
+    const li = document.createElement('li');
+    li.innerHTML = `
+      <strong>${e.name}</strong><br>
+      ${date.toUTCString()}<br>
+      ΔMag: ${e.magnitude_drop || '-'} | Duration: ${e.duration || '-'}
+    `;
+    list.appendChild(li);
+  });
+}
+
+loadEvents();
+</script>
 
 </body>
 </html>
