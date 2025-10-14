@@ -35,4 +35,5 @@ jobs:
           git config user.name "Colibri Bot"
           git config user.email "bot@colibri.ca"
           git add data/occultation_events.json
-          git commit -m "Auto-update occultation event
+          git commit -m "Auto-update occultation events" || echo "No changes to commit"
+          git push
