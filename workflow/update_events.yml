@@ -1,0 +1,30 @@
+name: Update Occultation Events
+
+on:
+  schedule:
+    - cron: '0 6 * * *'  # Every day at 06:00 UTC
+  workflow_dispatch:
+
+jobs:
+  update-events:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Generate event file
+        run: python scripts/generate_occultation_events.py
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "Colibri Observatory Bot"
+          git config user.email "cmartz@uwo.ca"
+          git add data/occultation_events.json
+          git commit -m "Auto-update occultation events"
+          git push
