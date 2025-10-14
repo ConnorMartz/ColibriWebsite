@@ -24,33 +24,49 @@ HEADERS = {
     "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) ColibriBot/1.0"
 }
 
-def fetch_occultations(start_date: str, end_date: str):
+def fetch_occultations(start_date: str, end_date: str, max_pages: int = 20):
     """
-    Query LIneA Occultation API for a given date range.
-    Returns a list of event dicts. Also writes a tiny debug snapshot.
+    Query LIneA for a date window and follow pagination:
+      response: { count, pageParam, next, previous, results: [ ... ] }
+    Stops early if we collected enough or reached max_pages.
     """
-    params = {"start_date": start_date, "end_date": end_date}
-    print(f"📡 GET {LOPD_API_URL} {params}")
-    r = requests.get(LOPD_API_URL, params=params, headers=HEADERS, timeout=60)
-    print(f"🔗 status={r.status_code}")
-    r.raise_for_status()
-    data = r.json()
+    all_events = []
+    page = 1
+    while page <= max_pages:
+        params = {"start_date": start_date, "end_date": end_date, "page": page}
+        print(f"📡 GET {LOPD_API_URL} {params}")
+        r = requests.get(LOPD_API_URL, params=params, headers=HEADERS, timeout=60)
+        print(f"🔗 status={r.status_code}")
+        r.raise_for_status()
+        data = r.json()
 
-    # API shape: {"count": ..., "results": [ ... ]}
-    events = data.get("results", data if isinstance(data, list) else [])
-    if not isinstance(events, list):
-        events = []
+        events = data.get("results", data if isinstance(data, list) else [])
+        if not isinstance(events, list):
+            events = []
+        all_events.extend(events)
+        print(f"  • page {page}: +{len(events)} (total {len(all_events)})")
 
-    # Write a small debug snapshot (first 3 items) so we can see actual keys in the repo
-    try:
-        with open("data/_debug_raw_events.json", "w") as f:
-            json.dump(events[:3], f, indent=2)
-        print("📝 Wrote data/_debug_raw_events.json")
-    except Exception as e:
-        print(f"⚠️ Could not write debug snapshot: {e}")
+        # Write a tiny snapshot only from the first page
+        if page == 1:
+            try:
+                with open("data/_debug_raw_events.json", "w") as f:
+                    json.dump(events[:3], f, indent=2)
+                print("📝 Wrote data/_debug_raw_events.json")
+            except Exception as e:
+                print(f"⚠️ Could not write debug snapshot: {e}")
 
-    print(f"✅ API returned {len(events)} items")
-    return events
+        next_page = data.get("next")
+        # Some APIs return an integer page number; others return a URL. Handle both:
+        if not next_page:
+            break
+        if isinstance(next_page, int):
+            page = next_page
+        else:
+            # If it's a URL, try to extract `page=`; otherwise just increment.
+            page += 1
+
+    print(f"✅ Aggregated {len(all_events)} items across {min(page, max_pages)} pages")
+    return all_events
 
 # =============================
 # Extract datetime string from event
