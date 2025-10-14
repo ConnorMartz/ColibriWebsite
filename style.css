@@ -194,3 +194,37 @@ body {
 .dropdown:hover .dropdown-content, .dropdown:focus-within .dropdown-content { 
     display: block; 
 }
+/* Section for the style of the events board. */
+.event-box {
+  background: linear-gradient(90deg, #f3e8ff 0%, #e8d6ff 100%);
+  border-radius: 10px;
+  padding: 20px 30px;
+  width: 400px;
+  margin: 40px auto;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+  font-family: 'Montserrat', sans-serif;
+}
+
+.event-box h3 {
+  color: #161b42;
+  text-align: center;
+  font-size: 26px;
+  margin-bottom: 10px;
+}
+
+.event-box ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.event-box li {
+  font-size: 18px;
+  color: #161b42;
+  padding: 5px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.event-box li:last-child {
+  border-bottom: none;
+}
