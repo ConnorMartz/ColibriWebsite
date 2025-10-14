@@ -275,7 +275,7 @@ def main():
 
         for min_alt, sun_limit in thresholds:
             visible = filter_visible(raw, min_alt_deg=min_alt, sun_alt_max_deg=sun_limit)
-            visible = sort_by_time(visible)
+            visible = sort_by_time(visible)json
 
             # de-dup by (datetime, name)
             dedup = {}
@@ -292,17 +292,29 @@ def main():
         if len(collected) >= 5:
             break
 
-    # If still <5, fall back so the site isn't empty while we tune filters
-    if len(collected) < 5:
-        if fallback_any:
-            print(f"ℹ️ Falling back to unfiltered events: {len(fallback_any)}")
-            collected = fallback_any
-        else:
-            collected = []
-            print("ℹ️ No events found at all.")
+    # --- FUTURE-ONLY FILTER & FINAL SELECTION ---
+    def is_future(ev):
+        """Return True if the event occurs after 'now' (UTC)."""
+        dt = parse_dt_str(ev)
+        if not dt:
+            return False
+        try:
+            return Time(dt).to_datetime(timezone.utc) > datetime.now(timezone.utc)
+        except Exception:
+            return False
+    
+    # Filter out past events
+    future_only = [e for e in collected if is_future(e)]
+    
+    if len(future_only) >= 5:
+        collected = future_only
+    else:
+        print(f"⚠️ Only {len(future_only)} future events found, keeping all available.")
+        collected = future_only or collected
 
     # Normalize and keep top 10
     final_events = [normalize(ev) for ev in sort_by_time(collected)[:10]]
+    
 
     with open("data/occultation_events.json", "w") as f:
         json.dump(final_events, f, indent=2)
