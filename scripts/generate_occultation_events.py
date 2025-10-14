@@ -21,57 +21,56 @@ ELGINFIELD = EarthLocation(lat=ELGINFIELD_LAT*u.deg, lon=ELGINFIELD_LON*u.deg, h
 LOPD_API_URL = "https://solarsystem.linea.org.br/api/occultations"
 
 def fetch_occultations(start_date: str, end_date: str):
-    """
-    Query the LIneA Occultation Prediction API for a given date range.
-
-    Parameters:
-        start_date (str): ISO date string (YYYY-MM-DD)
-        end_date   (str): ISO date string (YYYY-MM-DD)
-
-    Returns:
-        list: List of occultation event dictionaries returned by the API
-    """
-    params = {
-        "start_date": start_date,  # 'YYYY-MM-DD'
-        "end_date": end_date       # 'YYYY-MM-DD'
-    }
+    params = {"start_date": start_date, "end_date": end_date}
     r = requests.get(LOPD_API_URL, params=params, timeout=60)
     r.raise_for_status()
     data = r.json()
-    # Some APIs return list directly; others wrap as {"results": [...]}
-    return data.get("results", data)
+    events = data.get("results", data)
+
+    # NEW: write a tiny debug snapshot so we can see the schema
+    try:
+        snap = events[:3] if isinstance(events, list) else events
+        with open("data/_debug_raw_events.json", "w") as f:
+            json.dump(snap, f, indent=2)
+        print("📝 Wrote data/_debug_raw_events.json (first 3 events)")
+    except Exception as e:
+        print(f"⚠️ Could not write debug snapshot: {e}")
+
+    return events
 
 # =============================
 # Extract datetime string from event
 # =============================
 def parse_dt_str(ev):
-    """
-    Attempt to extract a UTC datetime string from an event record.
-    Checks several common keys used by different datasets.
-
-    Returns:
-        str or None
-    """
-    return ev.get("datetime") or ev.get("datetime_utc") or ev.get("time") or None
+    # Try a wide net of possible keys
+    for k in [
+        "datetime", "datetime_utc", "time", "utc_time", "event_time",
+        "epoch", "epoch_utc", "date_time"
+    ]:
+        if k in ev and ev[k]:
+            return str(ev[k])
+    return None
 
 # =============================
 # Extract datetime string from event
 # =============================
 def parse_ra_dec(ev):
     """
-    Attempt to extract Right Ascension and Declination (in degrees)
-    from the event dictionary using common field names.
-
-    Returns:
-        (float, float): RA and Dec in degrees, or (None, None) if not found
+    Return (ra_deg, dec_deg) in degrees, or (None, None).
+    Try multiple schemas: object coords, star coords, Greek names, underscores, etc.
     """
-    cand_keys = [
-        ("ra_deg", "dec_deg"),    # preferred
-        ("ra", "dec"),
-        ("RA_deg", "DEC_deg"),
-        ("RA", "DEC"),
+    candidates = [
+        ("ra_deg", "dec_deg"), ("ra", "dec"),
+        ("RA_deg", "DEC_deg"), ("RA", "DEC"),
+        ("object_ra_deg", "object_dec_deg"),
+        ("target_ra_deg", "target_dec_deg"),
+        ("alpha", "delta"), ("alpha_deg", "delta_deg"),
+        ("star_ra_deg", "star_dec_deg"),
+        ("star_ra", "star_dec"),
+        ("alpha_star", "delta_star"),
+        ("ra_obj", "dec_obj"), ("raStar", "decStar"),
     ]
-    for ra_k, dec_k in cand_keys:
+    for ra_k, dec_k in candidates:
         if ra_k in ev and dec_k in ev:
             try:
                 return float(ev[ra_k]), float(ev[dec_k])
