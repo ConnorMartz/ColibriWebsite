@@ -275,7 +275,7 @@ def main():
 
         for min_alt, sun_limit in thresholds:
             visible = filter_visible(raw, min_alt_deg=min_alt, sun_alt_max_deg=sun_limit)
-            visible = sort_by_time(visible)json
+            visible = sort_by_time(visible)
 
             # de-dup by (datetime, name)
             dedup = {}
