@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Chariklo occultation",
+    "datetime_utc": "2025-10-18T03:45:00Z",
+    "magnitude_drop": "0.4",
+    "duration": "6s"
+  },
+  {
+    "name": "KBO (2002 TX300)",
+    "datetime_utc": "2025-11-02T08:22:00Z",
+    "magnitude_drop": "0.15",
+    "duration": "3s"
+  }
+]
